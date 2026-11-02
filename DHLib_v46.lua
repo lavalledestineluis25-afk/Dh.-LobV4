@@ -1199,13 +1199,20 @@ function Library:CreateWindow(cfg)
     })
     themed(function()
         tbGlowGrad.Color = accentSeq()
-    end)
+    end) 
     local tbLbl = create("TextLabel", {
-        Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = tbText,
-        Font = Enum.Font.GothamBlack, TextSize = 14, TextColor3 = WHITE, Parent = disc,
-    })
-    accentGrad(tbLbl, 90)
-
+    Size = UDim2.fromScale(1, 1),
+    BackgroundTransparency = 1,
+    Text = tbText,
+    Font = Enum.Font.GothamBlack,
+    TextSize = 17,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextStrokeColor3 = Color3.fromRGB(0, 0, 0),
+    TextStrokeTransparency = 0.15,
+    TextScaled = false,
+    Parent = disc,
+})
+accentGrad(tbLbl, 90)
     toggleSnowHolder = create("Frame", {
         Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Visible = snowOn, Parent = disc,
     })
