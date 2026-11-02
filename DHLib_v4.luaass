@@ -1208,7 +1208,7 @@ function Library:CreateWindow(cfg)
     TextSize = 17,
     TextColor3 = Color3.fromRGB(255, 255, 255),
     TextStrokeColor3 = Color3.fromRGB(0, 0, 0),
-    TextStrokeTransparency = 0.15,
+    TextStrokeTransparency = 0,
     TextScaled = false,
     Parent = disc,
 })
@@ -1521,10 +1521,6 @@ function Library:CreateWindow(cfg)
             ax = ax + aw + 8
         end
 
-        n.bar = create("Frame", {
-            Position = UDim2.new(0, 0, 1, -3), Size = UDim2.new(n.manual and n.shownP or 1, 0, 0, 3),
-            BackgroundColor3 = color, BorderSizePixel = 0, Parent = card,
-        })
 
         table.insert(notifs, n)
         notifRelayout()
@@ -1563,7 +1559,6 @@ function Library:CreateWindow(cfg)
                 local inside = mp.X >= p.X and mp.X <= p.X + s.X and mp.Y >= p.Y and mp.Y <= p.Y + s.Y
                 if n.manual then
                     n.shownP = n.shownP + (n.progress - n.shownP) * (1 - math.exp(-dt * 10))
-                    n.bar.Size = UDim2.new(n.shownP, 0, 0, 3)
                     if n.progress >= 1 then
                         n.doneT = (n.doneT or 0) + dt
                         if n.doneT > 1.2 then
@@ -1574,7 +1569,6 @@ function Library:CreateWindow(cfg)
                     if not inside then
                         n.t = n.t + dt
                     end
-                    n.bar.Size = UDim2.new(math.clamp(1 - n.t / n.dur, 0, 1), 0, 0, 3)
                     if n.t >= n.dur then
                         dismissNotif(n)
                     end
