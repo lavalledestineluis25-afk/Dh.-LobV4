@@ -1212,7 +1212,6 @@ function Library:CreateWindow(cfg)
     TextScaled = false,
     Parent = disc,
 })
-accentGrad(tbLbl, 90)
     toggleSnowHolder = create("Frame", {
         Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Visible = snowOn, Parent = disc,
     })
